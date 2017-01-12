@@ -73,11 +73,6 @@ Vagrant will hang on ``Warning: Connection refused. Retrying...`` error.
 That's because we edited network configuration to enable pxeboot. Please ignore it.
 
 Virtualbox gui will pop up, showing vm netboot.
-To restart boot procedure.
-
-```
-$ vagrant reload
-```
 
 ### Libvirt provider
 
@@ -89,6 +84,11 @@ $ vagrant up --provider libvirt
 ```
 Vagrant will hang on ``Waiting for domain to get an IP address...``.  
 That's because box ask for network configuration on management network which do not exist here. Please ignore it.  
+
+To restart boot procedure.
+```
+$ vagrant reload
+```
 
 
 **Refs**
