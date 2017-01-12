@@ -1,4 +1,4 @@
-# Vagrant PXE environment test
+# Vagrant PXE test environment
 
 A vagrant PXE client/server environment which supports virtualbox and libvirt providers.  
 Inspired by https://github.com/stephenrlouie/PXE-Boot-VM/  
