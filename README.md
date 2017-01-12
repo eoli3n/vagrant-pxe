@@ -7,17 +7,13 @@ It is designed to learn and test cloning solutions, nfsroot, syslinux, etc...
 
 ## Setup
 
-_Qemu / Libvirt / Virtualbox_
+1° install _Qemu / Libvirt / Virtualbox_  
+ * See your distribution documentation.
 
-See your distribution documentation.
+2° if using, install _Vagrant-libvirt Provider_
+ * https://github.com/vagrant-libvirt/vagrant-libvirt
 
-_Vagrant-libvirt Provider_
-
-https://github.com/vagrant-libvirt/vagrant-libvirt
-
-```
-$ git clone http://github.com/eoli3n/vagrant-pxe
-```
+3° ``git clone http://github.com/eoli3n/vagrant-pxe``
 
 ## Edit PXE configuration
 
@@ -100,3 +96,4 @@ $ vagrant reload
 **Todo**
 
 * Doc : submodule include
+* 
