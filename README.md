@@ -1,5 +1,4 @@
 # Vagrant PXE environment test
----
 
 A vagrant PXE client/server environment which supports virtualbox and libvirt providers.  
 Inspired by https://github.com/stephenrlouie/PXE-Boot-VM/  
@@ -7,7 +6,6 @@ Inspired by https://github.com/stephenrlouie/PXE-Boot-VM/
 It is designed to learn and test cloning solutions, nfsroot, syslinux, etc...
 
 ## Setup
----
 
 _Qemu / Libvirt / Virtualbox_
 
@@ -23,12 +21,11 @@ $ git clone http://github.com/eoli3n/vagrant-pxe
 
 ## Edit PXE configuration
 
-PXE server's installation script is ``config/setup.sh``.
-All required files are in ``config/ressources``.
+PXE server's installation script is ``config/setup.sh``.  
+All required files are in ``config/ressources``.  
 Default pxe configuration load syslinux with a menu to boot local disk.
 
 ## Run PXE server
----
 
 * **System Box** => debian/jessie64
 * **Default CPU** => 1
@@ -54,7 +51,6 @@ $ vagrant ssh
 ```
 
 ## Run PXE client
----
 
 * **System Box** => debian/jessie64
 * **Default CPU** => 1
@@ -96,13 +92,11 @@ That's because box ask for network configuration on management network which do 
 
 
 **Refs**
----
 
 * http://www.syslinux.org/wiki/index.php?title=PXELINUX
 * https://help.ubuntu.com/community/DisklessUbuntuHowto
 * https://github.com/vagrant-libvirt/vagrant-libvirt#no-box-and-pxe-boot
 
 **Todo**
----
 
 * Doc : submodule include
