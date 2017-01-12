@@ -23,7 +23,7 @@ $ git clone http://github.com/eoli3n/vagrant-pxe
 
 PXE server's installation script is ``config/setup.sh``.  
 All required files are in ``config/ressources``.  
-Default pxe configuration load syslinux with a menu to boot local disk.
+Default pxe configuration load pxelinux with a menu to boot local disk.
 
 ## Run PXE server
 
