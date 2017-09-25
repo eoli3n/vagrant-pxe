@@ -6,9 +6,9 @@ Vagrant.configure("2") do |config|
 
     pxe_server.vm.box = "debian/jessie64"
     pxe_server.vm.hostname = "pxe-server"
-    pxe_server.ssh.username ='root'
-    pxe_server.ssh.insert_key = 'true'
-    pxe_server.ssh.forward_x11 = 'true'
+    #pxe_server.ssh.username ='root'
+    #pxe_server.ssh.insert_key = 'true'
+    #pxe_server.ssh.forward_x11 = 'true'
     #using rsync to fix nfs issues
     pxe_server.vm.synced_folder "config", "/config", type: "rsync"
     pxe_server.vm.network "private_network", ip: "192.168.0.254", libvirt__network_name: "pxe_network", :libvirt__dhcp_enabled => false, virtualbox__intnet: "pxe_network"
@@ -22,6 +22,7 @@ Vagrant.configure("2") do |config|
     pxe_server.vm.provider :virtualbox do |vb|
       vb.memory = '1024'
       vb.cpus = '1'
+      vb.gui = true
     end
 
     pxe_server.vm.provision "shell", path: "config/setup.sh"
