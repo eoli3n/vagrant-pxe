@@ -1,34 +1,33 @@
 # Vagrant PXE test environment
 
-A vagrant PXE client/server environment which supports virtualbox and libvirt providers.  
-Inspired by https://github.com/stephenrlouie/PXE-Boot-VM/  
+A vagrant PXE client/server environment which supports:
+- virtualbox and libvirt providers.  
+- legacy and UEFI boot
+- pxelinux and ipxe
 
-It is designed to learn and test cloning solutions, nfsroot, syslinux, etc...
+It is designed to learn and test cloning solutions, nfsroot, syslinux, ipxe etc...
 
 ## Setup
 
-1° install _Qemu / Libvirt / Virtualbox_  
+1° install Qemu, Libvirt, Virtualbox, OVMF  
  * See your distribution documentation.
-
-2° if using, install _Vagrant-libvirt Provider_
- * https://github.com/vagrant-libvirt/vagrant-libvirt
-
+2° if using, install [vagrant-libvirt provider](https://github.com/vagrant-libvirt/vagrant-libvirt)
 3° ``git clone http://github.com/eoli3n/vagrant-pxe``
 
 ## Edit PXE configuration
 
 PXE server's installation script is ``config/setup.sh``.  
 All required files are in ``config/ressources``.  
-Default pxe configuration load pxelinux with a menu to boot local disk.
+Default pxe configuration loads ipxe in EFI mode.
 
 ## Run PXE server
 
-* **System Box** => debian/jessie64
-* **Default CPU** => 1
-* **Default RAM** => 1024
-* **Networking**
- * **eth0** => Management network
- * **eth1** => Private network "pxe_network"
+* OS: debian 10
+* CPU: 1
+* RAM: 1024
+* Networking
+ * eth0: Management network
+ * eth1: Private network "pxe_network"
 
 ### Virtualbox provider
 
@@ -48,11 +47,11 @@ $ vagrant ssh
 
 ## Run PXE client
 
-* **System Box** => debian/jessie64
-* **Default CPU** => 1
-* **Default RAM** => 1024
-* **Networking**
- * **eth0** => Private network "pxe_network"
+* OS: debian 10
+* CPU: 1
+* RAM: 2048
+* Networking
+ * eth0: Private network "pxe_network"
 
 ### Virtualbox provider
 
@@ -86,14 +85,9 @@ To restart boot procedure.
 $ vagrant reload
 ```
 
-
 **Refs**
 
 * http://www.syslinux.org/wiki/index.php?title=PXELINUX
 * https://help.ubuntu.com/community/DisklessUbuntuHowto
 * https://github.com/vagrant-libvirt/vagrant-libvirt#no-box-and-pxe-boot
-
-**Todo**
-
-* Doc : submodule include
-* 
+* https://github.com/stephenrlouie/PXE-Boot-VM/  
