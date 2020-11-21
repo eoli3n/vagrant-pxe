@@ -21,14 +21,15 @@ vagrant plugin install vagrant-libvirt
 ### Configure
 
 Default pxe configuration loads ipxe in EFI mode.
-You should
+You should create skeleton and put everything you need to boot here.  
 ```
 cd vagrant-pxe
 mkdir -p tftpboot
 cat << EOF > tftpboot/script.ipxe
 #!ipxe
 echo "My custom ipxe script is loaded as script.ipxe from tftp root /tftpboot
-sleep 20
+:loop
+sleep 10 && goto loop
 EOF
 ```
 

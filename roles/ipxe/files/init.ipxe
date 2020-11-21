@@ -4,4 +4,4 @@ echo ipxe is working !
 sleep 5 && goto load
 
 :load
-chain script.ipxe || goto loop
+chain /script.ipxe || goto loop
