@@ -1,0 +1,6 @@
+- hosts: all
+  roles:
+    - role: dhcp
+    - role: tftp
+    #- role: pxelinux
+    - role: ipxe

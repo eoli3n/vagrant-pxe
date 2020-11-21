@@ -1,0 +1,16 @@
+---
+- name: install tftpd-hpa
+  apt:
+    name: tftpd-hpa
+    state: present
+
+- name: create tftp root
+  file:
+    path: /tftpboot
+    state: directory
+
+- name: configure tftp
+  copy:
+    src: tftpd-hpa
+    dest: /etc/default/
+  notify: restart tftp
