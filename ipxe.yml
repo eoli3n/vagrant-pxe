@@ -2,5 +2,6 @@
   roles:
     - role: dhcp
     - role: tftp
+    - role: http
     #- role: pxelinux
     - role: ipxe
