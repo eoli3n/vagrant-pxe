@@ -1,19 +1,24 @@
 # Vagrant PXE test environment
 
 A vagrant PXE client/server environment which supports:
-- virtualbox and libvirt providers.  
 - legacy and UEFI boot  
 - pxelinux and ipxe  
 
 It is designed to learn and test cloning solutions, nfsroot, syslinux, ipxe etc...
 
-## Setup
+## Prepare
 
-1° install Qemu, Libvirt, Virtualbox, OVMF  
-2° if using, install [vagrant-libvirt provider](https://github.com/vagrant-libvirt/vagrant-libvirt)  
-3° ``git clone http://github.com/eoli3n/vagrant-pxe``  
+Install qemu, libvirt, OVMF, nfsd, vagrant-libvirt
+```
+# For archlinux
+pacman -S vagrant libvirt qemu ovmf virt-manager nfs-utils
+sudo gpasswd -a $USER libvirt
+systemctl start libvirtd
+vagrant plugin install vagrant-libvirt
+# choose libvirt in menu
+```
 
-## Edit PXE configuration
+## Configure
 
 Default pxe configuration loads ipxe in EFI mode.
 
