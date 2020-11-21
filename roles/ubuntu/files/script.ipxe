@@ -1,5 +1,5 @@
 #!ipxe
 kernel http://192.168.0.254/focal/casper/vmlinuz
 initrd http://192.168.0.254/focal/casper/initrd
-imgargs vmlinuz initrd=initrd rootfstype=nfs netboot=nfs nfsroot=192.168.0.254:/var/www/focal splash ip=dhcp boot=casper autoinstall ds=nocloud-net;s=http://192.168.0.254/focal/cloud-init --
+imgargs vmlinuz initrd=initrd rootfstype=nfs netboot=nfs nfsroot=192.168.0.254:/var/www/focal splash ip=dhcp boot=casper autoinstall debian-installer/language=fr console-setup/layoutcode?=fr ds=nocloud-net;s=http://192.168.0.254/focal/autoinstall/
 boot

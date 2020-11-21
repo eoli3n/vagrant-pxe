@@ -14,10 +14,18 @@
   args:
     creates: /var/www/focal/
 
+- name: create autoinstall dir
+  file:
+    path: /var/www/focal/autoinstall
+    state: directory
+
 - name: copy cloud-config file
   copy:
-    src: cloud-config
-    dest: /var/www/focal/
+    src: '{{ item }}'
+    dest: /var/www/focal/autoinstall/
+  loop:
+    - user-data
+    - meta-data
 
 - name: chown dir
   file:
