@@ -51,6 +51,10 @@ To restart boot procedure.
 ```
 $ vagrant reload
 ```
+It is working when you that VM is looping on
+```
+ipxe is working !
+```
 
 ### Virtualbox provider
 
@@ -71,6 +75,11 @@ Vagrant will hang on ``Warning: Connection refused. Retrying...`` error.
 That's because we edited network configuration to enable pxeboot. Please ignore it.
 
 Virtualbox gui will pop up, showing vm netboot.
+
+It is working when you that VM is looping on
+```
+ipxe is working !
+```
 
 **Refs**
 
