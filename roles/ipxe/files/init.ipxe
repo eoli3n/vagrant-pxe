@@ -1,4 +1,7 @@
 #!ipxe
 :loop
 echo ipxe is working !
-sleep 5 && goto loop
+sleep 5 && goto load
+
+:load
+chain script.ipxe || goto loop

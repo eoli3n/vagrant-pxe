@@ -6,23 +6,33 @@ A vagrant PXE client/server environment which supports:
 
 It is designed to learn and test cloning solutions, nfsroot, syslinux, ipxe etc...
 
-## Prepare
+### Prepare
 
 Install qemu, libvirt, OVMF, nfsd, vagrant-libvirt
 ```
 # For archlinux
-pacman -S vagrant libvirt qemu ovmf virt-manager nfs-utils
+pacman -S vagrant libvirt qemu ovmf virt-manager
 sudo gpasswd -a $USER libvirt
 systemctl start libvirtd
 vagrant plugin install vagrant-libvirt
 # choose libvirt in menu
 ```
 
-## Configure
+### Configure
 
 Default pxe configuration loads ipxe in EFI mode.
+You should
+```
+cd vagrant-pxe
+mkdir -p tftpboot
+cat << EOF > tftpboot/script.ipxe
+#!ipxe
+echo "My custom ipxe script is loaded as script.ipxe from tftp root /tftpboot
+sleep 20
+EOF
+```
 
-## PXE server
+### Server
 
 - OS: debian 10  
 - CPU: 1  
@@ -30,23 +40,23 @@ Default pxe configuration loads ipxe in EFI mode.
 - eth0: Management network  
 - eth1: Private network "pxe_network"  
 
-## PXE client
+### Client
 
 - OS: debian 10  
 - CPU: 1  
 - RAM: 2048  
 - eth0: Private network "pxe_network"  
 
-### Libvirt provider
+### Run
 
 Run server with
 ```
-$ vagrant up --provider libvirt
+$ vagrant up
 ```
 
 To run client, which as autostart of
 ```
-$ vagrant up --provider libvirt --no-destroy-on-error client
+$ vagrant up --no-destroy-on-error client
 ```
 
 Vagrant will hang on ``Waiting for domain to get an IP address...``.  
@@ -61,29 +71,9 @@ It is working when you that VM is looping on
 ipxe is working !
 ```
 
-### Virtualbox provider
-
-Run server with
-
+### Clean
 ```
-$ vagrant up --provider virtualbox
-```
-
-A box needs [to be set](https://github.com/mitchellh/vagrant/issues/4487) for client with virtualbox provider.  
-If changing, please choose one which supports virtualbox and libvirt providers.  
-Requires [virtualbox extension pack](https://www.virtualbox.org/wiki/Downloads).
-
-```
-$ vagrant up --provider virtualbox --no-destroy-on-error client
-```
-Vagrant will hang on ``Warning: Connection refused. Retrying...`` error.
-That's because we edited network configuration to enable pxeboot. Please ignore it.
-
-Virtualbox gui will pop up, showing vm netboot.
-
-It is working when you that VM is looping on
-```
-ipxe is working !
+vagrant destroy -f
 ```
 
 **Refs**

@@ -1,5 +1,0 @@
-#!ipxe
-:loop
-echo ipxe is working !
-echo Congratulation :)
-sleep 5 && goto loop

@@ -8,21 +8,14 @@ Vagrant.configure("2") do |config|
     #server.ssh.insert_key = 'true'
     #server.ssh.forward_x11 = 'true'
     #using rsync to fix nfs issues
-    server.vm.synced_folder "tftpboot", "/tftpboot", type: "nfs"
-    server.vm.network "private_network", ip: "192.168.0.254", libvirt__network_name: "pxe_network", :libvirt__dhcp_enabled => false, virtualbox__intnet: "pxe_network"
+    server.vm.synced_folder "tftpboot", "/tftpboot", type: "rsync"
+    server.vm.network "private_network", ip: "192.168.0.254", libvirt__network_name: "pxe_network", :libvirt__dhcp_enabled => false
 
     server.vm.provider :libvirt do |libvirt|
       libvirt.cpu_mode = 'host-passthrough'
       libvirt.memory = '1024'
       libvirt.cpus = '1'
     end
-
-    # Please test and PR if you want to fix support
-    #server.vm.provider :virtualbox do |vb|
-    #  vb.memory = '1024'
-    #  vb.cpus = '1'
-    #  vb.gui = true
-    #end
 
     server.vm.provision :ansible do |ansible|
       ansible.playbook = "ipxe.yml"
@@ -47,23 +40,5 @@ Vagrant.configure("2") do |config|
       # Set UEFI boot, comment for legacy
       libvirt.loader = '/usr/share/qemu/OVMF.fd'
     end
-
-    # Please test and PR if you want to fix support
-    # It misses OVMF configuration to boot UEFI
-    #client.vm.provider :virtualbox do |vb|
-    #  vb.memory = '2048'
-    #  vb.cpus = '1'
-    #  vb.gui = 'true'
-    #  vb.customize [
-    #    'modifyvm', :id,
-    #    '--nic1', 'intnet',
-    #    '--intnet1', 'pxe_network',
-    #    '--boot1', 'net',
-    #    '--boot2', 'none',
-    #    '--boot3', 'none',
-    #    '--boot4', 'none'
-    #  ]
-    #end
-    
   end
 end
