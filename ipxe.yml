@@ -3,5 +3,6 @@
     - role: dhcp
     - role: tftp
     - role: http
+    - role: nfs
     #- role: pxelinux
     - role: ipxe

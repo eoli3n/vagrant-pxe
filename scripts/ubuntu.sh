@@ -27,7 +27,7 @@ cat << EOF > "$tftpboot/script.ipxe"
 #!ipxe
 kernel http://192.168.0.254/installer/casper/vmlinuz
 initrd http://192.168.0.254/installer/casper/initrd
-imgargs vmlinuz initrd=initrd ip=dhcp --
+imgargs vmlinuz initrd=initrd ip=dhcp boot=casper --
 boot
 EOF
 

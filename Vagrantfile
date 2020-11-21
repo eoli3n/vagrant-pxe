@@ -39,6 +39,10 @@ Vagrant.configure("2") do |config|
       libvirt.storage :file, :size => '50G', :type => 'qcow2'
       # How to disable first NIC netboot
       libvirt.boot 'network'
+      libvirt.mgmt_attach = 'false'
+      libvirt.management_network_name = "pxe_network"
+      libvirt.management_network_address = "192.168.0.0/24"
+      libvirt.management_network_mode = "nat"
       # Set UEFI boot, comment for legacy
       libvirt.loader = '/usr/share/qemu/OVMF.fd'
     end

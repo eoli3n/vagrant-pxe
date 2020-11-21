@@ -1,0 +1,11 @@
+---
+- name: install nfs-kernel-server
+  apt:
+    name: nfs-kernel-server
+    state: present
+
+- name: configure nfs-kernel-server
+  copy:
+    src: exports
+    dest: /etc/
+  notify: restart nfs-kernel-server
