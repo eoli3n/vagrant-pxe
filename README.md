@@ -31,7 +31,7 @@ eth1: Private network "pxe_network"
 
 ```
 $ cd vagrant-pxe/server
-$ vagrant up --provider virtualbox
+$ vagrant up --provider virtualbox --no-destroy-on-error
 $ vagrant ssh
 ```
 
@@ -39,7 +39,7 @@ $ vagrant ssh
 
 ```
 $ cd vagrant-pxe/server
-$ vagrant up --provider libvirt
+$ vagrant up --provider libvirt --no-destroy-on-error
 $ vagrant ssh
 ```
 
@@ -59,7 +59,7 @@ Requires [virtualbox extension pack](https://www.virtualbox.org/wiki/Downloads).
 
 ```
 $ cd vagrant-pxe/client
-$ vagrant up --provider virtualbox
+$ vagrant up --provider virtualbox --no-destroy-on-error
 ```
 Vagrant will hang on ``Warning: Connection refused. Retrying...`` error.
 That's because we edited network configuration to enable pxeboot. Please ignore it.
@@ -72,7 +72,7 @@ No box required, but will use ``Debian 8`` as with virtualbox provider.
 
 ```
 $ cd vagrant-pxe/client
-$ vagrant up --provider libvirt
+$ vagrant up --provider libvirt --no-destroy-on-error
 ```
 Vagrant will hang on ``Waiting for domain to get an IP address...``.  
 That's because box ask for network configuration on management network which do not exist here. Please ignore it.  
