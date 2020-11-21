@@ -79,7 +79,7 @@ ipxe is working !
 # To download iso and prepare tftp
 ./scripts/ubuntu.sh
 # Then reprovision pxe server
-vagrant provision server
+vagrant reload --provision
 ```
 
 ### Clean
