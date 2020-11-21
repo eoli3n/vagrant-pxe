@@ -55,10 +55,11 @@ Run server with
 $ vagrant up
 ```
 
-To run client, which as autostart of
+To run client, which as ``autostart off``
 ```
 $ vagrant up --no-destroy-on-error client
 ```
+If you want to test a legacy client boot, comment ``libvirt.firmware`` line in [Vagrantfile](Vagrantfile).
 
 Vagrant will hang on ``Waiting for domain to get an IP address...``.  
 That's because box ask for network configuration on management network which do not exist here. Please ignore it.  
