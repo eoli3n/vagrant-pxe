@@ -14,9 +14,9 @@
   args:
     creates: /var/www/focal/
 
-- name: copy kickstart file
+- name: copy cloud-config file
   copy:
-    src: kickstart.cfg
+    src: cloud-config
     dest: /var/www/focal/
 
 - name: chown dir
