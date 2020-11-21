@@ -6,3 +6,4 @@
     - role: nfs
     #- role: pxelinux
     - role: ipxe
+    - role: ubuntu

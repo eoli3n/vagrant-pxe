@@ -1,3 +1,1 @@
-- ansible provisionner
-- virtualbox OVMF support
-- server pxelinux config
+- nfs-kernel-server nfsroot

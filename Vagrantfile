@@ -4,11 +4,6 @@ Vagrant.configure("2") do |config|
 
     server.vm.box = "generic/debian10"
     server.vm.hostname = "pxe-server"
-    #server.ssh.username ='root'
-    #server.ssh.insert_key = 'true'
-    #server.ssh.forward_x11 = 'true'
-    server.vm.synced_folder "tftpboot", "/tftpboot", type: "rsync"
-    server.vm.synced_folder "www", "/var/www", type: "rsync", owner: "www-data" 
     server.vm.network "private_network",
       ip: "192.168.0.254",
       libvirt__network_name: "pxe_network",
@@ -21,7 +16,7 @@ Vagrant.configure("2") do |config|
     end
 
     server.vm.provision :ansible do |ansible|
-      ansible.playbook = "ipxe.yml"
+      ansible.playbook = "playbook.yml"
     end
   end
 
@@ -29,8 +24,6 @@ Vagrant.configure("2") do |config|
 
     client.vm.box = "generic/debian10"
     client.vm.hostname = "pxe-client"
-    client.vm.network "private_network",
-      type: "dhcp"
 
     client.vm.provider :libvirt do |libvirt|
       libvirt.cpu_mode = 'host-passthrough'

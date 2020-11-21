@@ -1,0 +1,27 @@
+---
+- name: download iso to /tmp
+  get_url:
+    url: http://releases.ubuntu.com/focal/ubuntu-20.04.1-live-server-amd64.iso
+    dest: /tmp/
+
+- name: extract to web server
+  iso_extract:
+    image: /tmp/ubuntu-20.04.1-live-server-amd64.iso
+    dest: /var/www/focal/
+
+- name: copy kickstart file
+  copy:
+    src: kickstart.cfg
+    dest: /var/www/focal/
+
+- name: chown dir
+  file:
+    path: /var/www/focal/
+    owner: www-data
+    recurse: yes
+
+- name: create boot entry
+  copy:
+    src: script.ipxe
+    dest: /tftpboot/
+
