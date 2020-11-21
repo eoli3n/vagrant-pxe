@@ -73,6 +73,15 @@ It is working when you that VM is looping on
 ipxe is working !
 ```
 
+### Ubuntu netboot UEFI
+
+```
+# To download iso and prepare tftp
+./scripts/ubuntu.sh
+# Then reprovision pxe server
+vagrant provision server
+```
+
 ### Clean
 ```
 vagrant destroy -f
