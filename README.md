@@ -15,45 +15,53 @@ It is designed to learn and test cloning solutions, nfsroot, syslinux, ipxe etc.
 
 ## Edit PXE configuration
 
-PXE server's installation script is ``config/setup.sh``.  
-All required files are in ``config/ressources``.  
 Default pxe configuration loads ipxe in EFI mode.
 
-## Run PXE server
+## PXE server
 
-OS: debian 10  
-CPU: 1  
-RAM: 1024  
-eth0: Management network  
-eth1: Private network "pxe_network"  
+- OS: debian 10  
+- CPU: 1  
+- RAM: 1024  
+- eth0: Management network  
+- eth1: Private network "pxe_network"  
 
-### Virtualbox provider
+## PXE client
 
-```
-$ cd vagrant-pxe/server
-$ vagrant up --provider virtualbox server
-$ vagrant ssh
-```
+- OS: debian 10  
+- CPU: 1  
+- RAM: 2048  
+- eth0: Private network "pxe_network"  
 
 ### Libvirt provider
 
+Run server with
 ```
-$ vagrant up --provider libvirt server
-$ vagrant ssh
+$ vagrant up --provider libvirt
 ```
 
-## Run PXE client
+To run client, which as autostart of
+```
+$ vagrant up --provider libvirt --no-destroy-on-error client
+```
 
-OS: debian 10  
-CPU: 1  
-RAM: 2048  
-eth0: Private network "pxe_network"  
+Vagrant will hang on ``Waiting for domain to get an IP address...``.  
+That's because box ask for network configuration on management network which do not exist here. Please ignore it.  
+
+To restart boot procedure.
+```
+$ vagrant reload
+```
 
 ### Virtualbox provider
 
-A box needs [to be set](https://github.com/mitchellh/vagrant/issues/4487) for virtualbox provider.  
-If changing, please choose one which supports virtualbox and libvirt providers.  
+Run server with
 
+```
+$ vagrant up --provider virtualbox
+```
+
+A box needs [to be set](https://github.com/mitchellh/vagrant/issues/4487) for client with virtualbox provider.  
+If changing, please choose one which supports virtualbox and libvirt providers.  
 Requires [virtualbox extension pack](https://www.virtualbox.org/wiki/Downloads).
 
 ```
@@ -64,24 +72,10 @@ That's because we edited network configuration to enable pxeboot. Please ignore 
 
 Virtualbox gui will pop up, showing vm netboot.
 
-### Libvirt provider
-
-No box required, but will use ``Debian 10`` as with virtualbox provider.
-
-```
-$ vagrant up --provider libvirt --no-destroy-on-error client
-```
-Vagrant will hang on ``Waiting for domain to get an IP address...``.  
-That's because box ask for network configuration on management network which do not exist here. Please ignore it.  
-
-To restart boot procedure.
-```
-$ vagrant reload
-```
-
 **Refs**
 
-* http://www.syslinux.org/wiki/index.php?title=PXELINUX
-* https://help.ubuntu.com/community/DisklessUbuntuHowto
-* https://github.com/vagrant-libvirt/vagrant-libvirt#no-box-and-pxe-boot
-* https://github.com/stephenrlouie/PXE-Boot-VM/  
+- http://www.syslinux.org/wiki/index.php?title=PXELINUX
+- https://help.ubuntu.com/community/DisklessUbuntuHowto
+- https://github.com/vagrant-libvirt/vagrant-libvirt#no-box-and-pxe-boot
+- https://github.com/stephenrlouie/PXE-Boot-VM/  
+- https://ipxe.org
