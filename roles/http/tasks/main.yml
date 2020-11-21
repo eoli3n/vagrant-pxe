@@ -4,7 +4,7 @@
     name: nginx
     state: present
 
-- name: configure nginx
+- name: configure default site
   copy:
     src: default
     dest: /etc/nginx/sites-available

@@ -4,10 +4,15 @@
     url: http://releases.ubuntu.com/focal/ubuntu-20.04.1-live-server-amd64.iso
     dest: /tmp/
 
+- name: install 7z
+  apt:
+    name: p7zip-full
+    state: present
+
 - name: extract to web server
-  iso_extract:
-    image: /tmp/ubuntu-20.04.1-live-server-amd64.iso
-    dest: /var/www/focal/
+  shell: 7z x /tmp/ubuntu-20.04.1-live-server-amd64.iso -o/var/www/focal/
+  args:
+    creates: /var/www/focal/
 
 - name: copy kickstart file
   copy:
