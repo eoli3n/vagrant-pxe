@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
     #server.ssh.forward_x11 = 'true'
     #using rsync to fix nfs issues
     server.vm.synced_folder "tftpboot", "/tftpboot", type: "rsync"
-    server.vm.synced_folder "www", "/var/www", type: "rsync"
+    server.vm.synced_folder "www", "/var/www", type: "rsync", owner: "www-data" 
     server.vm.network "private_network", ip: "192.168.0.254", libvirt__network_name: "pxe_network", :libvirt__dhcp_enabled => false
 
     server.vm.provider :libvirt do |libvirt|
