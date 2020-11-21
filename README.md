@@ -22,9 +22,12 @@ vagrant plugin install vagrant-libvirt
 
 Default pxe configuration loads ipxe in EFI mode.
 You should create skeleton and put everything you need to boot here.  
+- ``www`` is the root of webserver
+- ``tftpboot`` is the root of tftp
+Minimal configuration is
 ```
 cd vagrant-pxe
-mkdir -p tftpboot
+mkdir -p tftpboot www
 cat << EOF > tftpboot/script.ipxe
 #!ipxe
 echo "My custom ipxe script is loaded as script.ipxe from tftp root /tftpboot
@@ -73,7 +76,7 @@ It is working when you that VM is looping on
 ipxe is working !
 ```
 
-### Ubuntu netboot UEFI
+### Ubuntu UEFI installer
 
 ```
 # To download iso and prepare tftp

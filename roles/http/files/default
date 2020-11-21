@@ -1,0 +1,15 @@
+user              www-data;
+error_log         logs/error.log info;
+http {
+    server_tokens off;
+    include       mime.types;
+    charset       utf-8;
+    access_log    logs/access.log  combined;
+    server {
+        server_name   localhost;
+        listen        127.0.0.1:80;
+        error_page    500 502 503 504  /50x.html;
+        location      / {
+        }
+    }
+}
