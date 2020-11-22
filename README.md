@@ -26,14 +26,15 @@ vagrant plugin install vagrant-libvirt
 - CPU: 1  
 - RAM: 1024  
 - eth0: Management network  
-- eth1: Private network "pxe_network"  
+- eth1: Private network "pxe"  
 
 ### Client
 
 - OS: debian 10  
 - CPU: 1  
 - RAM: 2048  
-- eth0: Private network "pxe_network"  
+- eth0: Network to provide internet  
+- eth1: Private network "pxe"  
 
 ### Run
 
