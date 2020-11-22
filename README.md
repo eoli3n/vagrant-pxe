@@ -1,5 +1,9 @@
 # Vagrant PXE test environment
 
+<p align="center">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Vagrant.png/394px-Vagrant.png" width="100" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://ipxe.org/_media/logos/ipxe-small.png" width="90" />
+</p>
+
 A vagrant PXE client/server environment which supports legacy and UEFI boot with iPXE.  
 It is designed to learn and test cloning solutions, nfsroot, ipxe, auto install etc...  
 Default pxe configuration loads ipxe in UEFI mode and start ubuntu installer over nfsroot.  
