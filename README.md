@@ -38,7 +38,7 @@ Run server with
 $ vagrant up
 ```
 
-To run client, which as ``autostart off``  
+To run client, which has ``autostart off``  
 Note: If you want to test a legacy client boot, comment ``libvirt.firmware`` line in [Vagrantfile](Vagrantfile).
 ```
 $ vagrant up client
