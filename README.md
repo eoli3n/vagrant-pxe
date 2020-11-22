@@ -1,11 +1,8 @@
 # Vagrant PXE test environment
 
-A vagrant PXE client/server environment which supports:
-- legacy and UEFI boot  
-- pxelinux and ipxe  
-
-It is designed to learn and test cloning solutions, nfsroot, syslinux, ipxe etc...
-Default pxe configuration loads ipxe in EFI mode and start ubuntu installer over nfsroot.
+A vagrant PXE client/server environment which supports legacy and UEFI boot with iPXE.  
+It is designed to learn and test cloning solutions, nfsroot, ipxe, auto install etc...  
+Default pxe configuration loads ipxe in UEFI mode and start ubuntu installer over nfsroot.  
 
 ### Prepare
 
@@ -46,9 +43,6 @@ To run client, which as ``autostart off``
 $ vagrant up client
 ```
 If you want to test a legacy client boot, comment ``libvirt.firmware`` line in [Vagrantfile](Vagrantfile).
-
-Vagrant will hang on ``Waiting for domain to get an IP address...``.  
-That's because box ask for network configuration on management network which do not exist here. Please ignore it.  
 
 To restart boot procedure.
 ```
