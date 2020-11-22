@@ -38,16 +38,12 @@ Run server with
 $ vagrant up
 ```
 
-To run client, which as ``autostart off``
+To run client, which as ``autostart off``  
+Note: If you want to test a legacy client boot, comment ``libvirt.firmware`` line in [Vagrantfile](Vagrantfile).
 ```
 $ vagrant up client
 ```
-If you want to test a legacy client boot, comment ``libvirt.firmware`` line in [Vagrantfile](Vagrantfile).
-
-To restart boot procedure.
-```
-$ vagrant reload
-```
+Then open ``virt-manager`` to see your pxe client booting.
 
 ### Clean
 ```
