@@ -2,6 +2,7 @@
 - name: download iso to /tmp
   get_url:
     url: http://releases.ubuntu.com/focal/ubuntu-20.04.1-live-server-amd64.iso
+    checksum: sha256:http://releases.ubuntu.com/focal/SHA256SUMS
     dest: /tmp/
 
 - name: install 7z
