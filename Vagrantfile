@@ -37,7 +37,11 @@ Vagrant.configure("2") do |config|
       libvirt.memory = '2048'
       libvirt.cpus = '1'
       # Create a disk
-      libvirt.storage :file, :size => '50G', :type => 'qcow2'
+      libvirt.storage :file,
+        size: '50G',
+        type: 'qcow2',
+        bus: 'sata',
+        device: 'sda'
       # Set fr keyboard for vnc connection
       libvirt.keymap = 'fr'
       # Set pxe network NIC as default boot
