@@ -4,6 +4,11 @@
     name: nfs-kernel-server
     state: present
 
+- name: create exports dir
+  file:
+    path: /exports
+    state: directory
+
 - name: configure nfs-kernel-server
   copy:
     src: exports
