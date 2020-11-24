@@ -35,6 +35,7 @@ vagrant plugin install vagrant-libvirt
 Run server with
 ```
 $ vagrant up
+$ vagrant ssh server
 ```
 
 To run client, which has ``autostart off``  

@@ -1,4 +1,8 @@
 - hosts: all
+  tasks:
+    - name: install kitty terminfo
+      apt:
+        name: kitty-terminfo
   roles:
     - role: dhcp
     - role: tftp
