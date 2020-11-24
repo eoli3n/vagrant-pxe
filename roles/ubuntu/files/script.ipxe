@@ -1,5 +1,6 @@
 #!ipxe
 kernel http://192.168.0.254/focal/vmlinuz
 initrd http://192.168.0.254/focal/initrd
-imgargs vmlinuz initrd=initrd rootfstype=nfs netboot=nfs nfsroot=192.168.0.254:/exports/focal splash ip=dhcp boot=casper autoinstall debian-installer/language=fr console-setup/layoutcode?=fr ds=nocloud-net;s=http://192.168.0.254/focal/autoinstall/
+# As client VM has two interfaces, we need to force DHCP on ens6, pxe network. Default option is ip=dhcp
+imgargs vmlinuz initrd=initrd rootfstype=nfs netboot=nfs nfsroot=192.168.0.254:/exports/focal splash ip=ens6 boot=casper autoinstall debian-installer/language=fr console-setup/layoutcode?=fr ds=nocloud-net;s=http://192.168.0.254/focal/autoinstall/
 boot

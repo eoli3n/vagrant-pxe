@@ -1,1 +1,1 @@
-- nfs-kernel-server nfsroot
+- fix chroot apt update error
