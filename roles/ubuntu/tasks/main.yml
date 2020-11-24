@@ -2,7 +2,7 @@
 - name: download iso to /tmp
   get_url:
     url: http://releases.ubuntu.com/focal/ubuntu-20.04.1-live-server-amd64.iso
-    checksum: sha256:http://releases.ubuntu.com/focal/SHA256SUMS
+    checksum: sha256:443511f6bf12402c12503733059269a2e10dec602916c0a75263e5d990f6bb93
     dest: /tmp/
 
 - name: install 7z
@@ -10,15 +10,28 @@
     name: p7zip-full
     state: present
 
-- name: extract to web server
-  shell: 7z x /tmp/ubuntu-20.04.1-live-server-amd64.iso -o/var/www/focal/
-  args:
-    creates: /var/www/focal/
+- name: create exports dir
+  file:
+    path: /exports
+    state: directory
 
-- name: create autoinstall dir
+- name: extract to web server
+  shell: 7z x /tmp/ubuntu-20.04.1-live-server-amd64.iso -o/exports/focal/
+  args:
+    creates: /exports/focal/
+
+- name: create focal and autoinstall dirs
   file:
     path: /var/www/focal/autoinstall
     state: directory
+
+- name: copy kernel and initrd
+  copy:
+    src: "/exports/focal/casper/{{item}}"
+    dest: /var/www/focal/
+  loop:
+    - vmlinuz
+    - initrd
 
 - name: copy cloud-config file
   copy:
@@ -38,4 +51,3 @@
   copy:
     src: script.ipxe
     dest: /tftpboot/
-
