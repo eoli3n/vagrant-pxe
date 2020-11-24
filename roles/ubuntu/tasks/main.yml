@@ -24,6 +24,7 @@
   copy:
     src: "/exports/focal/casper/{{item}}"
     dest: /var/www/focal/
+    remote_src: yes
   loop:
     - vmlinuz
     - initrd
