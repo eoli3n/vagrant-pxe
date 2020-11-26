@@ -15,4 +15,4 @@
 - name: configure first ipxe script
   copy:
     src: init.ipxe
-    dest: /tftpboot/ipxe/
+    dest: /var/www/

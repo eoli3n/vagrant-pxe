@@ -46,7 +46,7 @@
 - name: create boot entry
   copy:
     src: script.ipxe
-    dest: /tftpboot/
+    dest: /var/www/
 
 - name: fix nfs perms
   # workaround to https://bugs.launchpad.net/subiquity/+bug/1905296
