@@ -5,7 +5,14 @@ autoinstall:
   keyboard:
     layout: fr
     variant: latin9
+  refresh-installer:
+    update: yes
   identity:
     hostname: ubuntu-server
+    # Password is "ubuntu"
     password: "$6$exDY1mhS4KUYCE/2$zmn9ToZwTKLhCw.b4/b.ZRTIZM30JZ4QrOQ2aOXJ8yk96xpcCof0kxKwuX1kqLG/ygbJ1f8wxED22bTL4F46P0"
     username: ubuntu
+  # Disable netboot after install and reboot to ubuntu
+  late-commands:
+    - apt install efibootmgr -y
+    - efibootmgr -o $(efibootmgr | grep ubuntu | cut -d'*' -f1 | tr -d 'Boot')

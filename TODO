@@ -1,1 +1,2 @@
 - fix chroot apt update error
+- try to force if names with vagrant

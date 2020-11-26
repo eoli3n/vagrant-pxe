@@ -47,6 +47,7 @@ Vagrant.configure("2") do |config|
       # Set pxe network NIC as default boot
       boot_network = {'network' => 'pxe'}
       libvirt.boot boot_network
+      libvirt.boot 'hd'
       # Set UEFI boot, comment for legacy
       libvirt.loader = '/usr/share/qemu/OVMF.fd'
     end
