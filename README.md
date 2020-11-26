@@ -58,3 +58,5 @@ vagrant destroy -f
 - https://github.com/vagrant-libvirt/vagrant-libvirt#no-box-and-pxe-boot
 - https://github.com/stephenrlouie/PXE-Boot-VM/  
 - https://ipxe.org
+
+Note: check ``pxelinux`` branch to see a simple pxelinux exemple.
