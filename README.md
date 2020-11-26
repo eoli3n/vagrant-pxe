@@ -44,6 +44,7 @@ Note: If you want to test a legacy client boot, comment ``libvirt.firmware`` lin
 $ vagrant up client
 ```
 Then open ``virt-manager`` to see your pxe client booting.
+Before the install ends, uncheck NIC in VM boot order configuration to avoid install loop on reboot.
 
 ### Clean
 ```
