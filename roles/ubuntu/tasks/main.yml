@@ -50,8 +50,7 @@
 
 - name: fix nfs perms
   # workaround to https://bugs.launchpad.net/subiquity/+bug/1905296
-  shell: |
-    chmod go+x /exports/focal
-    find /exports/focal/dists /exports/focal/pool -type d -execdir chmod go+x {} \;
-    find /exports/focal/dists /exports/focal/pool -type f -execdir chmod go+r {} \;
-
+  file:
+    path: /exports/focal
+    mode: a+rx
+    recurse: yes
