@@ -1,1 +1,1 @@
-/exports 192.168.0.*(sync,no_root_squash,no_subtree_check,ro)
+/exports 192.168.0.*(async,no_root_squash,no_subtree_check,ro)
