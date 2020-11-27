@@ -10,7 +10,7 @@
     name: p7zip-full
     state: present
 
-- name: extract to web server
+- name: extract to nfs export
   shell: 7z x /tmp/ubuntu-20.04.1-live-server-amd64.iso -o/exports/focal/
   args:
     creates: /exports/focal/
